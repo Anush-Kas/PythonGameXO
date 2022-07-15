@@ -12,11 +12,13 @@ print("-" * 59)
 print("       Добро пожаловать в игру '\033[95mКрестики Нолики!\033[0;0m'  ")
 print("-" * 59, "\n")
 
+
 def pole(table):
     print(("+" + ("-" * 3)) *3 + "+")
     for i in range(3):
         print("|", table[0+i*3], "|", table[1+i*3], "|", table[2+i*3], "|")
         print(("+" + ("-" * 3)) *3 + "+")
+
 
 def igrok(player_key):
     valid = False
@@ -36,12 +38,14 @@ def igrok(player_key):
         else:
             print("Я сломался, больше не играю!")
 
+
 def check_win(table):
     win_position = ((0, 1, 2), (3, 4, 5),(6, 7, 8),(0, 3, 6),(1, 4, 7),(2, 5, 8),(0, 4, 8),(2, 4, 6))
     for each in win_position:
         if table[each[0]] == table[each[1]] == table[each[2]]:
             return table[each[0]]
     return False
+
 
 def igra(table):
     counter = 0
