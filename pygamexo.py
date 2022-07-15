@@ -1,5 +1,9 @@
-
 table = list(range(1, 10))
+print(" ")
+print("---" * 16)
+print("   Добро пожаловать в игру '\033[95mКрестики Нолики\033[0;0m'!  ")
+print("---" * 16, "\n")
+
 
 def pole(table):
     print("-" * 13)
@@ -10,7 +14,7 @@ def pole(table):
 def igrok(player_key):
     valid = False
     while not valid:
-        player_answer = input("Введите свой ход в ячейку под номером " + player_key+": ")
+        player_answer = input(" " + player_key + " Введите свой ход в ячейку под номером: ")
         try:
             player_answer = int(player_answer)
         except:
@@ -26,7 +30,7 @@ def igrok(player_key):
             print("Error")
 
 def check_win(table):
-    win_position = ((0, 1, 2), (3, 4, 5),(6, 7, 8),(0, 3, 6),(1, 4, 5),(2, 5, 8),(0, 4, 8),(2, 4, 6))
+    win_position = ((0, 1, 2), (3, 4, 5),(6, 7, 8),(0, 3, 6),(1, 4, 7),(2, 5, 8),(0, 4, 8),(2, 4, 6))
     for each in win_position:
         if table[each[0]] == table[each[1]] == table[each[2]]:
             return table[each[0]]
@@ -37,6 +41,7 @@ def igra(table):
     win = False
     while not win:
         pole(table)
+        print(" ")
         if counter % 2 == 0:
             igrok("\033[93mX\033[0;0m")
         else:
@@ -45,6 +50,7 @@ def igra(table):
         if counter > 4:
             tmp = check_win(table)
             if tmp:
+                print("---" * 15)
                 print("\n " + tmp, " Одержал победу!!!\n")
                 win = True
                 break
